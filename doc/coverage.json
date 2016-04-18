@@ -1,0 +1,74 @@
+{
+  "coverage": "90.62%",
+  "expectCount": 64,
+  "actualCount": 58,
+  "files": {
+    "app/components/App.js": {
+      "expectCount": 18,
+      "actualCount": 18,
+      "undocumentLines": []
+    },
+    "app/ErrorHandler.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "app/__mocks__/ErrorHandler.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        2
+      ]
+    },
+    "app/components/NewsDetail.js": {
+      "expectCount": 9,
+      "actualCount": 8,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "app/components/NewsItem.js": {
+      "expectCount": 8,
+      "actualCount": 7,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "app/components/NewsList.js": {
+      "expectCount": 15,
+      "actualCount": 14,
+      "undocumentLines": [
+        30
+      ]
+    },
+    "app/State.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "app/utilities/componentRender.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "app/utilities/dom.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "app/components/__mocks__/superagent.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        68
+      ]
+    },
+    "app/utilities/shallowEqual.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    }
+  }
+}

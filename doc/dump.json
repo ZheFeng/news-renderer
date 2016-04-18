@@ -1,0 +1,3618 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/ErrorHandler.js",
+    "memberof": null,
+    "longname": "app/ErrorHandler.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "\nfunction errorReport(msg, url, lineNo, columnNo, error) {\n  /*eslint-disable */\n  if (error) {\n    console.error(error);\n  }\n  const reportItem = [`msg: ${msg}`, `url: ${url}`];\n  if (lineNo) {\n    reportItem.push(`lineNo: ${lineNo}`);\n  }\n  if (columnNo) {\n    reportItem.push(`columnNo: ${columnNo}`);\n  }\n  console.error(`${reportItem.join(',')}`);\n  /*eslint-disable */\n}\nfunction httpErrorReport(error, req, res) {\n  /*eslint-disable */\n  console.error(error);\n  console.error('req', req);\n  console.error('res', res);\n  /*eslint-disable */\n}\n\n/**\n * ErrorHandler - Global error handler\n *\n * @param  {string | error} msg         If string, then deal as Uncaught Error.\n * If error, then deal as http(ajax) error\n * @param  {string | http request} urlOrReq    If Uncaught Error, then error\n * script url. If http error, then http request\n * @param  {string | http response} lineNoOrRes If Uncaught Error, then error\n * line number. If http error, then http response\n * @param  {string} columnNo    error column number, may not provide\n * by some browsers\n * @param  {error} error       error object, may not provide by some browsers\n * @return {bool}             skip browser error handler\n */\nexport default function ErrorHandler(\n  msg, urlOrReq, lineNoOrRes, columnNo, error\n) {\n  if (typeof msg === 'string') {\n    errorReport(msg, urlOrReq, lineNoOrRes, columnNo, error);\n  } else {\n    httpErrorReport(msg, urlOrReq, lineNoOrRes);\n  }\n\n  return false;\n}\n"
+  },
+  {
+    "__docId__": 1,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "errorReport",
+    "memberof": "app/ErrorHandler.js",
+    "longname": "app/ErrorHandler.js~errorReport",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/ErrorHandler.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "params": [
+      {
+        "name": "msg",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "url",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "lineNo",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "columnNo",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "error",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 2,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "httpErrorReport",
+    "memberof": "app/ErrorHandler.js",
+    "longname": "app/ErrorHandler.js~httpErrorReport",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/ErrorHandler.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "error",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 3,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "ErrorHandler",
+    "memberof": "app/ErrorHandler.js",
+    "longname": "app/ErrorHandler.js~ErrorHandler",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/ErrorHandler.js",
+    "importStyle": "ErrorHandler",
+    "description": "ErrorHandler - Global error handler",
+    "lineNumber": 39,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string ",
+          " error"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "msg",
+        "description": "If string, then deal as Uncaught Error.\nIf error, then deal as http(ajax) error"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string ",
+          " http request"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "urlOrReq",
+        "description": "If Uncaught Error, then error\nscript url. If http error, then http request"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string ",
+          " http response"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "lineNoOrRes",
+        "description": "If Uncaught Error, then error\nline number. If http error, then http response"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "columnNo",
+        "description": "error column number, may not provide\nby some browsers"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "error"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "error",
+        "description": "error object, may not provide by some browsers"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "bool"
+      ],
+      "spread": false,
+      "description": "skip browser error handler"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/State.js",
+    "memberof": null,
+    "longname": "app/State.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import shallowEqual from './utilities/shallowEqual';\n\nclass State {\n\n  _state = {\n    listLoading: false,\n    list: [],\n    item: null,\n  }\n  _listeners = []\n  _broadcast() {\n    this._listeners.forEach(listener => {\n      listener.call();\n    });\n  }\n\n  /**\n   * get - get the entire app state\n   *\n   * @return {object}  { list: [], item: {}, listLoading: bool }\n   */\n  get() {\n    return this._state;\n  }\n\n  /**\n   * setListLoading - change the list loading status\n   *\n   * @param  {bool} listLoading indicate ajax is loading or not\n   * @return {self}             State instance itself, to enable chain\n   */\n  setListLoading(listLoading) {\n    const preState = this._state;\n    this._state = { ...this._state, listLoading };\n    if (!shallowEqual(preState, this._state)) {\n      this._broadcast();\n    }\n    return this;\n  }\n\n  /**\n   * setList - set the list to display\n   *\n   * @param  {array<news item>} list the list of news which will be display\n   * @return {self}             State instance itself, to enable chain\n   */\n  setList(list) {\n    const preState = this._state;\n    this._state = { ...this._state, list };\n    if (!shallowEqual(preState, this._state)) {\n      this._broadcast();\n    }\n    return this;\n  }\n\n  /**\n   * setItem - set the selected news item to display\n   *\n   * @param  {obj} item the selected news item which will be display\n   * @return {self}             State instance itself, to enable chain\n   */\n  setItem(item) {\n    const preState = this._state;\n    this._state = { ...this._state, item };\n    if (!shallowEqual(preState, this._state)) {\n      this._broadcast();\n    }\n    return this;\n  }\n\n  /**\n   * onChange - subscribe change event of state\n   *\n   * @param  {func} listener callback handler, will be called when state chagned\n   * @return {self}             State instance itself, to enable chain\n   */\n  onChange(listener) {\n    this._listeners.push(listener);\n    return this;\n  }\n}\n\nexport default State;\n"
+  },
+  {
+    "__docId__": 5,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "State",
+    "memberof": "app/State.js",
+    "longname": "app/State.js~State",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/State.js",
+    "importStyle": "State",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 6,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_broadcast",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#_broadcast",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 7,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "get",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#get",
+    "access": null,
+    "description": "get - get the entire app state",
+    "lineNumber": 22,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "{ list: [], item: {}, listLoading: bool }"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 8,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setListLoading",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#setListLoading",
+    "access": null,
+    "description": "setListLoading - change the list loading status",
+    "lineNumber": 32,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "bool"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "listLoading",
+        "description": "indicate ajax is loading or not"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": "State instance itself, to enable chain"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 9,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_state",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#_state",
+    "access": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setList",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#setList",
+    "access": null,
+    "description": "setList - set the list to display",
+    "lineNumber": 47,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "array<news item>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "list",
+        "description": "the list of news which will be display"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": "State instance itself, to enable chain"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_state",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#_state",
+    "access": null,
+    "description": null,
+    "lineNumber": 49,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setItem",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#setItem",
+    "access": null,
+    "description": "setItem - set the selected news item to display",
+    "lineNumber": 62,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "obj"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "item",
+        "description": "the selected news item which will be display"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": "State instance itself, to enable chain"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 13,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_state",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#_state",
+    "access": null,
+    "description": null,
+    "lineNumber": 64,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 14,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "onChange",
+    "memberof": "app/State.js~State",
+    "longname": "app/State.js~State#onChange",
+    "access": null,
+    "description": "onChange - subscribe change event of state",
+    "lineNumber": 77,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "func"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "listener",
+        "description": "callback handler, will be called when state chagned"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": "State instance itself, to enable chain"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/__mocks__/ErrorHandler.js",
+    "memberof": null,
+    "longname": "app/__mocks__/ErrorHandler.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "\nexport default function ErrorHandler(msg) {\n  return msg;\n}\n"
+  },
+  {
+    "__docId__": 16,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "ErrorHandler",
+    "memberof": "app/__mocks__/ErrorHandler.js",
+    "longname": "app/__mocks__/ErrorHandler.js~ErrorHandler",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/__mocks__/ErrorHandler.js",
+    "importStyle": "ErrorHandler",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "params": [
+      {
+        "name": "msg",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 17,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/__tests__/State.js",
+    "memberof": null,
+    "longname": "app/__tests__/State.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../utilities/shallowEqual');\njest.unmock('../State');\n\nimport State from '../State';\n\n\ndescribe('State', () => {\n  it('should be able to get data', () => {\n    const state = new State();\n    expect(state.get().list.length).toBe(0);\n  });\n  it('should be able to set list', () => {\n    const state = new State();\n    state.setList([{}, {}, {}]);\n    expect(state.get().list.length).toBe(3);\n  });\n  it('should be able to set item', () => {\n    const state = new State();\n    state.setItem({ test: 123 });\n    expect(state.get().item.test).toBe(123);\n  });\n  it('should be able to set loading', () => {\n    const state = new State();\n    state.setListLoading(true);\n    expect(state.get().listLoading).toBe(true);\n    state.setListLoading(false);\n    expect(state.get().listLoading).toBe(false);\n  });\n  it('should be able to subscribe', () => {\n    const state = new State();\n    let indicator = false;\n    state.onChange(() => {\n      indicator = !indicator;\n    });\n    state.setListLoading(true);\n    expect(indicator).toBe(true);\n    state.setListLoading(false);\n    expect(indicator).toBe(false);\n    state.setListLoading(false);\n    expect(indicator).toBe(false);\n    state.setListLoading(true);\n    expect(indicator).toBe(true);\n  });\n  it('should not call broadcast if not change', () => {\n    const state = new State();\n    let indicator = true;\n    state.onChange(() => {\n      indicator = !indicator;\n    });\n\n    const testItem = { t: 1 };\n    state.setItem(testItem);\n    expect(indicator).toBe(false);\n    state.setItem(testItem);\n    expect(indicator).toBe(false);\n    state.setItem({ rt: 1 });\n    expect(indicator).toBe(true);\n\n    const testList = [{ t: 1 }];\n    state.setList(testList);\n    expect(indicator).toBe(false);\n    state.setList(testList);\n    expect(indicator).toBe(false);\n    state.setList([{ rt: 1 }]);\n    expect(indicator).toBe(true);\n  });\n});\n"
+  },
+  {
+    "__docId__": 18,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/App.js",
+    "memberof": null,
+    "longname": "app/components/App.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import State from '../State';\nimport ErrorHandler from '../ErrorHandler';\nimport componentRender from '../utilities/componentRender';\nimport { createDom } from '../utilities/dom';\nimport request from 'superagent';\n\nimport NewsList from './NewsList';\nimport NewsDetail from './NewsDetail';\n\n\nconst api = '/api/news';\n\n/** News render app, render a news list and a single selected news item */\nclass App {\n  /**\n   * constructor - init app\n   *\n   * @param  {dom wrapper} appContainer the application dom wrapper container\n   * @param  {string} SpinImage spin image url by webpack\n   * @param  {number} numberPerPage number of news item display per page\n   * @param  {number} offset the number start from to get the news item\n   * @param  {string} search search text for news item\n   * @param  {string} orderBy order key name [id, title, body]\n   * @param  {bool} orderDesc order desc or asc\n   * @return {none}               constructor don't return anything\n   */\n  constructor(\n    appContainer,\n    SpinImage,\n    numberPerPage = 3,\n    offset = 0,\n    search = '',\n    orderBy = 'id',\n    orderDesc = false\n  ) {\n    /**\n     * state of the app\n     * @type {State}\n     */\n    this.state = new State();\n\n    /**\n     * the application dom wrapper container\n     * @type {dom wrapper}\n     */\n    this.appContainer = appContainer;\n\n    /**\n     * spin image url by webpack\n     * @type {string}\n     */\n    this.SpinImage = SpinImage;\n\n    /**\n     * number of news item display per page\n     * @type {number}\n     */\n    this.numberPerPage = numberPerPage;\n\n    /**\n     * total number of news item\n     * @type {number}\n     */\n    this.total = 0;\n\n    /**\n     * the number start from to get the news item\n     * @type {number}\n     */\n    this.offset = offset;\n\n    /**\n     * search text for news item\n     * @type {string}\n     */\n    this.search = search;\n\n    /**\n     * order key name [id, title, body]\n     * @type {string}\n     */\n    this.orderBy = orderBy;\n\n    /**\n     * order desc or asc\n     * @type {bool}\n     */\n    this.orderDesc = orderDesc;\n    this.state.onChange(this.render.bind(this));\n    this.loadData();\n  }\n\n  /**\n   * loadData - load news from server\n   *\n   * @return {self}\n   */\n  loadData() {\n    this.state.setListLoading(true);\n    const query = {\n      offset: this.offset,\n      numberPerPage: this.numberPerPage,\n      search: this.search,\n      orderBy: this.orderBy,\n      order: this.orderDesc ? 'desc' : 'asc',\n    };\n    request.get(api)\n      .query(query)\n      .end((err, res) => {\n        if (err) {\n          return ErrorHandler(err, {\n            url: api,\n            query,\n          }, res);\n        }\n        this.total = res.body.total;\n        return this.state.setListLoading(false).setList(res.body.entities);\n      });\n    return this;\n  }\n\n  /**\n   * changeQuery - update the api query, will trigger the app rerender\n   *\n   * @param  {string} search      search text for news item\n   * @param  {number} numberPerPage number of news item display per page\n   * @param  {string} orderBy       order key name [id, title, body]\n   * @param  {bool} orderDesc   order desc or asc\n   * @return {self}\n   */\n  changeQuery({ search, numberPerPage, orderBy, orderDesc }) {\n    this.numberPerPage = numberPerPage;\n    if (this.numberPerPage < 1) {\n      this.numberPerPage = 1;\n    }\n    this.search = search;\n    this.orderBy = orderBy;\n    this.orderDesc = orderDesc;\n    this.offset = 0;\n    this.loadData();\n    return this;\n  }\n\n  /**\n   * goPre - go to previous page\n   *\n   * @return {self}\n   */\n  goPre() {\n    this.offset = parseInt(this.offset, 10) - parseInt(this.numberPerPage, 10);\n    if (this.offset < 0) {\n      this.offset = 0;\n    }\n    return this.loadData();\n  }\n\n  /**\n   * goNext - go to next page\n   *\n   * @return {self}\n   */\n  goNext() {\n    this.offset = parseInt(this.offset, 10) + parseInt(this.numberPerPage, 10);\n    this.loadData();\n  }\n\n  /**\n   * setItem - select news item to display detail\n   *\n   * @param  {event} e    select (click) event\n   * @param  {object} item selected news item\n   * @return {self}\n   */\n  setItem(e, item) {\n    this.state.setItem(item);\n    return this;\n  }\n\n  /**\n   * clearItem - clear item selection, back to news list\n   *\n   * @return {self}\n   */\n  clearItem() {\n    this.state.setItem(null);\n  }\n\n  /**\n   * render - render the app into container\n   *\n   * @return {dom wrapper}  app dom wrapper\n   */\n  render() {\n    const { listLoading, list, item } = this.state.get();\n    this.appContainer.empty();\n\n    const container = createDom('div').setClass('news-render-app');\n    this.appContainer.append(container);\n\n    if (item === null) {\n      const { search, numberPerPage, orderBy, orderDesc } = this;\n      const offset = parseInt(this.offset, 10);\n      return container.append(componentRender(NewsList, {\n        SpinImage: this.SpinImage,\n        list,\n        disablePre: offset < 1,\n        disableNext: offset + parseInt(this.numberPerPage, 10) >= this.total,\n        loading: listLoading,\n        onNextClick: this.goNext.bind(this),\n        onPreClick: this.goPre.bind(this),\n        query: { search, numberPerPage, orderBy, orderDesc },\n        onQueryChange: this.changeQuery.bind(this),\n        onClick: this.setItem.bind(this),\n      }));\n    }\n    return container.append(componentRender(NewsDetail, {\n      data: item,\n      onClick: this.clearItem.bind(this),\n    }));\n\n    // to async load script to avoid load everything at beginnign\n    // code below can be used whick called \"code split\"\n\n    // if (item === null) {\n    //   return require.ensure([], (require) => {\n    //     const NewsList = require('./NewsList').default;\n    //     container.append(componentRender(NewsList, {\n    //       SpinImage: this.SpinImage,\n    //       list,\n    //       loading: listLoading,\n    //       onNextClick: this.goNext.bind(this),\n    //       onPreClick: this.goPre.bind(this),\n    //       numberPerPage,\n    //       onNubmerPerPageChange: this.changeNubmerPerPage.bind(this),\n    //       onClick: (e, data) => state.setItem(data),\n    //     }));\n    //   });\n    // }\n    // return require.ensure([], (require) => {\n    //   const NewsDetail = require('./NewsDetail').default;\n    //   container.append(componentRender(NewsDetail, {\n    //     data: item,\n    //     onClick: () => state.setItem(null),\n    //   }));\n    // });\n  }\n}\n\nexport default App;\n"
+  },
+  {
+    "__docId__": 19,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "api",
+    "memberof": "app/components/App.js",
+    "longname": "app/components/App.js~api",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/components/App.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "App",
+    "memberof": "app/components/App.js",
+    "longname": "app/components/App.js~App",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/components/App.js",
+    "importStyle": "App",
+    "description": "News render app, render a news list and a single selected news item",
+    "lineNumber": 14,
+    "interface": false
+  },
+  {
+    "__docId__": 21,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#constructor",
+    "access": null,
+    "description": "constructor - init app",
+    "lineNumber": 27,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "dom wrapper"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "appContainer",
+        "description": "the application dom wrapper container"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "SpinImage",
+        "description": "spin image url by webpack"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "numberPerPage",
+        "description": "number of news item display per page"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "offset",
+        "description": "the number start from to get the news item"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "search",
+        "description": "search text for news item"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "orderBy",
+        "description": "order key name [id, title, body]"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "bool"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "orderDesc",
+        "description": "order desc or asc"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "none"
+      ],
+      "spread": false,
+      "description": "constructor don't return anything"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 22,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#state",
+    "access": null,
+    "description": "state of the app",
+    "lineNumber": 40,
+    "type": {
+      "nullable": null,
+      "types": [
+        "State"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 23,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "appContainer",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#appContainer",
+    "access": null,
+    "description": "the application dom wrapper container",
+    "lineNumber": 46,
+    "type": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 24,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "SpinImage",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#SpinImage",
+    "access": null,
+    "description": "spin image url by webpack",
+    "lineNumber": 52,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 25,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "numberPerPage",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#numberPerPage",
+    "access": null,
+    "description": "number of news item display per page",
+    "lineNumber": 58,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 26,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "total",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#total",
+    "access": null,
+    "description": "total number of news item",
+    "lineNumber": 64,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 27,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "offset",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#offset",
+    "access": null,
+    "description": "the number start from to get the news item",
+    "lineNumber": 70,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 28,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "search",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#search",
+    "access": null,
+    "description": "search text for news item",
+    "lineNumber": 76,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 29,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "orderBy",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#orderBy",
+    "access": null,
+    "description": "order key name [id, title, body]",
+    "lineNumber": 82,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 30,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "orderDesc",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#orderDesc",
+    "access": null,
+    "description": "order desc or asc",
+    "lineNumber": 88,
+    "type": {
+      "nullable": null,
+      "types": [
+        "bool"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 31,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "loadData",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#loadData",
+    "access": null,
+    "description": "loadData - load news from server",
+    "lineNumber": 98,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 32,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "total",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#total",
+    "access": null,
+    "description": null,
+    "lineNumber": 116,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 33,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "changeQuery",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#changeQuery",
+    "access": null,
+    "description": "changeQuery - update the api query, will trigger the app rerender",
+    "lineNumber": 131,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "search",
+        "description": "search text for news item"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "numberPerPage",
+        "description": "number of news item display per page"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "orderBy",
+        "description": "order key name [id, title, body]"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "bool"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "orderDesc",
+        "description": "order desc or asc"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 34,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "numberPerPage",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#numberPerPage",
+    "access": null,
+    "description": null,
+    "lineNumber": 132,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 35,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "numberPerPage",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#numberPerPage",
+    "access": null,
+    "description": null,
+    "lineNumber": 134,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 36,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "search",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#search",
+    "access": null,
+    "description": null,
+    "lineNumber": 136,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 37,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "orderBy",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#orderBy",
+    "access": null,
+    "description": null,
+    "lineNumber": 137,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 38,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "orderDesc",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#orderDesc",
+    "access": null,
+    "description": null,
+    "lineNumber": 138,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 39,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "offset",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#offset",
+    "access": null,
+    "description": null,
+    "lineNumber": 139,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 40,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "goPre",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#goPre",
+    "access": null,
+    "description": "goPre - go to previous page",
+    "lineNumber": 149,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 41,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "offset",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#offset",
+    "access": null,
+    "description": null,
+    "lineNumber": 150,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 42,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "offset",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#offset",
+    "access": null,
+    "description": null,
+    "lineNumber": 152,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 43,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "goNext",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#goNext",
+    "access": null,
+    "description": "goNext - go to next page",
+    "lineNumber": 162,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 44,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "offset",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#offset",
+    "access": null,
+    "description": null,
+    "lineNumber": 163,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 45,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setItem",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#setItem",
+    "access": null,
+    "description": "setItem - select news item to display detail",
+    "lineNumber": 174,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "event"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "e",
+        "description": "select (click) event"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "item",
+        "description": "selected news item"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 46,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "clearItem",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#clearItem",
+    "access": null,
+    "description": "clearItem - clear item selection, back to news list",
+    "lineNumber": 184,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 47,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/App.js~App",
+    "longname": "app/components/App.js~App#render",
+    "access": null,
+    "description": "render - render the app into container",
+    "lineNumber": 193,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "app dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/NewsDetail.js",
+    "memberof": null,
+    "longname": "app/components/NewsDetail.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import { createDom } from '../utilities/dom';\n\n/** Single news item detail view */\nclass NewsDetail {\n  /**\n   * constructor - init detail\n   *\n   * @param  {object} props { onClick(will be trigger when the back button\n   * click), data(the news item data) }\n   * @return {none}               constructor don't return anything\n   */\n  constructor(props) {\n    this.props = props;\n  }\n\n  /**\n   * onBackClick - back button click handler, will call the props onClick func\n   * and pass the event and news item data\n   *\n   * @param  {type} event button click event\n   * @return {self}\n   */\n  onBackClick(event) {\n    const { onClick, data } = this.props;\n    onClick(event, data);\n    return this;\n  }\n\n  /**\n   * renderBackBtn - render back button\n   *\n   * @return {dom wrapper}  the back button dom wrapper\n   */\n  renderBackBtn() {\n    return createDom('button').setClass('news-button')\n      .innerHTML('Back')\n      .on('click', this.onBackClick.bind(this));\n  }\n\n  /**\n   * renderImg - render news item image\n   *\n   * @return {dom wrapper}  the image dom wrapper\n   */\n  renderImg() {\n    const { data } = this.props;\n    return createDom('img')\n      .setClass('news-item-img')\n      .setAttr('src', data.img);\n  }\n\n  /**\n   * renderTitle - render the news item title\n   *\n   * @return {dom wrapper}  the title dom wrapper\n   */\n  renderTitle() {\n    const { data } = this.props;\n    return createDom('h3')\n      .setClass('title')\n      .innerHTML(data.title);\n  }\n\n  /**\n   * renderBody - render the news item body\n   *\n   * @return {dom wrapper}  the body dom wrapper\n   */\n  renderBody() {\n    const { data } = this.props;\n    return createDom('div')\n      .setClass('body')\n      .innerHTML(data.body);\n  }\n\n  /**\n   * render - render the detail of news item\n   *\n   * @return {dom wrapper}\n   */\n  render() {\n    return createDom('div').setClass('news-detail')\n      .append(this.renderBackBtn())\n      .append(this.renderImg())\n      .append(this.renderTitle())\n      .append(this.renderBody());\n  }\n}\n\nexport default NewsDetail;\n"
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "NewsDetail",
+    "memberof": "app/components/NewsDetail.js",
+    "longname": "app/components/NewsDetail.js~NewsDetail",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/components/NewsDetail.js",
+    "importStyle": "NewsDetail",
+    "description": "Single news item detail view",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 50,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#constructor",
+    "access": null,
+    "description": "constructor - init detail",
+    "lineNumber": 12,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "{ onClick(will be trigger when the back button\nclick), data(the news item data) }"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "none"
+      ],
+      "spread": false,
+      "description": "constructor don't return anything"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 51,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "props",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#props",
+    "access": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "onBackClick",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#onBackClick",
+    "access": null,
+    "description": "onBackClick - back button click handler, will call the props onClick func\nand pass the event and news item data",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "type"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "button click event"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderBackBtn",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#renderBackBtn",
+    "access": null,
+    "description": "renderBackBtn - render back button",
+    "lineNumber": 34,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the back button dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 54,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderImg",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#renderImg",
+    "access": null,
+    "description": "renderImg - render news item image",
+    "lineNumber": 45,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the image dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderTitle",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#renderTitle",
+    "access": null,
+    "description": "renderTitle - render the news item title",
+    "lineNumber": 57,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the title dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderBody",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#renderBody",
+    "access": null,
+    "description": "renderBody - render the news item body",
+    "lineNumber": 69,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the body dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/NewsDetail.js~NewsDetail",
+    "longname": "app/components/NewsDetail.js~NewsDetail#render",
+    "access": null,
+    "description": "render - render the detail of news item",
+    "lineNumber": 81,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/NewsItem.js",
+    "memberof": null,
+    "longname": "app/components/NewsItem.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import { createDom } from '../utilities/dom';\n\n/** News item node inside news list */\nclass NewsItem {\n  /**\n   * constructor - init detail\n   *\n   * @param  {object} props { onClick(will be trigger when the item\n   * click), data(the news item data) }\n   * @return {none}               constructor don't return anything\n   */\n  constructor(props) {\n    this.props = props;\n  }\n\n  /**\n   * onClick - item click handler, will call the props onClick func\n   * and pass the event and news item data\n   *\n   * @param  {type} event item click event\n   * @return {self}\n   */\n  onClick(event) {\n    const { onClick, data } = this.props;\n    onClick(event, data);\n    return this;\n  }\n\n  /**\n   * renderImg - render news item image\n   *\n   * @return {dom wrapper}  the image dom wrapper\n   */\n  renderImg() {\n    const { data } = this.props;\n    const container = createDom('div').setClass('news-item-img-container');\n    const img = createDom('img')\n      .setClass('news-item-img')\n      .setAttr('src', data.img);\n    return container.append(img);\n  }\n\n  /**\n   * renderTitle - render the news item title\n   *\n   * @return {dom wrapper}  the title dom wrapper\n   */\n  renderTitle() {\n    const { data } = this.props;\n    return createDom('h3').setClass('title')\n      .innerHTML(`${data.id}. ${data.title}`);\n  }\n\n  /**\n   * renderBody - render the news item body\n   *\n   * @return {dom wrapper}  the body dom wrapper\n   */\n  renderBody() {\n    const { data } = this.props;\n    return createDom('div').setClass('body').innerHTML(data.body);\n  }\n\n  /**\n   * render - render the news item\n   *\n   * @return {dom wrapper}\n   */\n  render() {\n    return createDom('div').setClass('news-item')\n      .append(this.renderImg())\n      .append(this.renderTitle())\n      .append(this.renderBody())\n      .on('click', this.onClick.bind(this));\n  }\n}\n\nexport default NewsItem;\n"
+  },
+  {
+    "__docId__": 59,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "NewsItem",
+    "memberof": "app/components/NewsItem.js",
+    "longname": "app/components/NewsItem.js~NewsItem",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/components/NewsItem.js",
+    "importStyle": "NewsItem",
+    "description": "News item node inside news list",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 60,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/NewsItem.js~NewsItem",
+    "longname": "app/components/NewsItem.js~NewsItem#constructor",
+    "access": null,
+    "description": "constructor - init detail",
+    "lineNumber": 12,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "{ onClick(will be trigger when the item\nclick), data(the news item data) }"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "none"
+      ],
+      "spread": false,
+      "description": "constructor don't return anything"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 61,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "props",
+    "memberof": "app/components/NewsItem.js~NewsItem",
+    "longname": "app/components/NewsItem.js~NewsItem#props",
+    "access": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "onClick",
+    "memberof": "app/components/NewsItem.js~NewsItem",
+    "longname": "app/components/NewsItem.js~NewsItem#onClick",
+    "access": null,
+    "description": "onClick - item click handler, will call the props onClick func\nand pass the event and news item data",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "type"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "item click event"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderImg",
+    "memberof": "app/components/NewsItem.js~NewsItem",
+    "longname": "app/components/NewsItem.js~NewsItem#renderImg",
+    "access": null,
+    "description": "renderImg - render news item image",
+    "lineNumber": 34,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the image dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderTitle",
+    "memberof": "app/components/NewsItem.js~NewsItem",
+    "longname": "app/components/NewsItem.js~NewsItem#renderTitle",
+    "access": null,
+    "description": "renderTitle - render the news item title",
+    "lineNumber": 48,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the title dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderBody",
+    "memberof": "app/components/NewsItem.js~NewsItem",
+    "longname": "app/components/NewsItem.js~NewsItem#renderBody",
+    "access": null,
+    "description": "renderBody - render the news item body",
+    "lineNumber": 59,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the body dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/NewsItem.js~NewsItem",
+    "longname": "app/components/NewsItem.js~NewsItem#render",
+    "access": null,
+    "description": "render - render the news item",
+    "lineNumber": 69,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 67,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/NewsList.js",
+    "memberof": null,
+    "longname": "app/components/NewsList.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import componentRender from '../utilities/componentRender';\nimport { createDom } from '../utilities/dom';\nimport NewsItem from './NewsItem';\n\n/** News list view */\nclass NewsList {\n  /**\n   * constructor - init detail\n   *\n   * @param  {object} props {\n   * onClick: will be trigger when the item click,\n   * list: the news list data,\n   * SpinImage:spin image url by webpack,\n   * disablePre: should disable pre button or not,\n   * disableNext: should disable next button or not,\n   * loading: should should spin or list,\n   * onNextClick: will be trigger when the next button click,\n   * onPreClick: will be trigger when the pre button click,\n   * query {\n     * numberPerPage: number of news item display per page\n     * search: search text for news item\n     * orderBy: order key name [id, title, body]\n     * orderDesc: order desc or asc\n     * }\n   * onQueryChange: will be trigger when the one of the query data change,\n   * }\n   * @return {none}               constructor don't return anything\n   */\n  constructor(props) {\n    this.props = props;\n  }\n\n  /**\n   * goPre - go to pre page\n   *\n   * @return {self}\n   */\n  goPre() {\n    const { disablePre } = this.props;\n    if (!disablePre) {\n      this.props.onPreClick();\n    }\n    return this;\n  }\n\n  /**\n   * goNext - go to next page\n   *\n   * @return {self}\n   */\n  goNext() {\n    const { disableNext } = this.props;\n    if (!disableNext) {\n      this.props.onNextClick();\n    }\n    return this;\n  }\n\n  /**\n   * changeNumberPerPage - update number per page\n   *\n   * @param  {event} e input event include the number value\n   * @return {self}\n   */\n  changeNumberPerPage(e) {\n    this.props.onQueryChange({\n      ...this.props.query,\n      numberPerPage: parseInt(e.target.value, 10),\n    });\n    return this;\n  }\n\n  /**\n   * changeSearch - update search text\n   *\n   * @param  {event} e input event include the search text\n   * @return {self}\n   */\n  changeSearch(e) {\n    this.props.onQueryChange({\n      ...this.props.query,\n      search: e.target.value,\n    });\n    return this;\n  }\n\n  /**\n   * changeOrderBy - update OrderBy key\n   *\n   * @param  {event} e select event include the OrderBy key\n   * @return {self}\n   */\n  changeOrderBy(e) {\n    this.props.onQueryChange({\n      ...this.props.query,\n      orderBy: e.target.value,\n    });\n    return this;\n  }\n\n  /**\n   * changeOrderDesc - trigger OrderDesc\n   *\n   * @return {self}\n   */\n  changeOrderDesc() {\n    this.props.onQueryChange({\n      ...this.props.query,\n      orderDesc: !this.props.query.orderDesc,\n    });\n    return this;\n  }\n\n  /**\n   * renderTitle - render the list title\n   *\n   * @return {dom wrapper}  the list title dom wrapper\n   */\n  renderTitle() {\n    return createDom('h2').setClass('title').innerHTML('News List');\n  }\n\n  /**\n   * renderOrderByDdl - reder order by select dom wrapper\n   *\n   * @param  {string} orderBy current orderBy key\n   * @return {dom wrapper}  the order by select dom wrapper\n   */\n  renderOrderByDdl(orderBy) {\n    const select = createDom('select')\n      .on('change', this.changeOrderBy.bind(this));\n    select.node.value = orderBy;\n    const keys = ['id', 'title', 'body'];\n\n    keys.forEach(key => {\n      const option = createDom('option')\n        .setAttr('value', key)\n        .innerHTML(key);\n      if (key === orderBy) {\n        option.setAttr('selected', true);\n      }\n      select.append(option);\n    });\n\n    return select;\n  }\n\n  /**\n   * renderToolbar - render toolbar include pre, next, search, order, number\n   * per page\n   *\n   * @return {dom wrapper}  the toolbar dom wrapper\n   */\n  renderToolbar() {\n    const { search, numberPerPage, orderBy, orderDesc } = this.props.query;\n    const { disablePre, disableNext } = this.props;\n    const toolbar = createDom('div').setClass('toolbar');\n    const preBtn = createDom('button')\n      .setClass(`news-button left ${disablePre ? 'disable' : ''}`)\n      .innerHTML('Pre').on('click', this.goPre.bind(this));\n    const nextBtn = createDom('button')\n      .setClass(`news-button right ${disableNext ? 'disable' : ''}`)\n      .innerHTML('Next').on('click', this.goNext.bind(this));\n\n    const span = createDom('span').innerHTML('Number Per Page: ');\n    const input = createDom('input')\n      .setAttr('type', 'text')\n      .setAttr('value', numberPerPage)\n      .on('change', this.changeNumberPerPage.bind(this));\n\n\n    const searchInput = createDom('input')\n    .setAttr('type', 'text')\n    .setAttr('placeholder', 'Search')\n    .setAttr('value', search)\n    .on('change', this.changeSearch.bind(this));\n\n\n    const orderBtn = createDom('button').setClass('news-button')\n      .innerHTML(orderDesc ? '&darr;' : '&uarr;')\n      .on('click', this.changeOrderDesc.bind(this));\n\n    const inputContainer = createDom('div')\n      .append(span).append(input)\n      .append(searchInput)\n      .append(createDom('span').innerHTML(' Order'))\n      .append(this.renderOrderByDdl(orderBy))\n      .append(orderBtn);\n    return toolbar.append(preBtn).append(nextBtn)\n      .append(inputContainer);\n  }\n\n  /**\n   * renderList - render the news list\n   *\n   * @return {dom wrapper}\n   */\n  renderList() {\n    const ul = createDom('ul').setClass('list');\n    const { list, onClick } = this.props;\n\n    list.forEach(item => {\n      const li = createDom('li').setClass('item');\n      const itemEle = componentRender(NewsItem, { data: item, onClick });\n      ul.append(li.append(itemEle));\n    });\n\n    return ul;\n  }\n\n  /**\n   * render - render the news list\n   *\n   * @return {dom wrapper}\n   */\n  renderLoading() {\n    return createDom('div')\n      .setClass('news-loading')\n      .append(createDom('img').setAttr('src', this.props.SpinImage));\n  }\n\n  /**\n   * render - description\n   *\n   * @return {type}  description\n   */\n  render() {\n    const { loading } = this.props;\n    const container = createDom('div').setClass('news-list');\n    container.append(this.renderTitle()).append(this.renderToolbar());\n\n    if (loading) {\n      return container.append(this.renderLoading());\n    }\n    return container.append(this.renderList());\n  }\n}\n\nexport default NewsList;\n"
+  },
+  {
+    "__docId__": 68,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "NewsList",
+    "memberof": "app/components/NewsList.js",
+    "longname": "app/components/NewsList.js~NewsList",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/components/NewsList.js",
+    "importStyle": "NewsList",
+    "description": "News list view",
+    "lineNumber": 6,
+    "interface": false
+  },
+  {
+    "__docId__": 69,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#constructor",
+    "access": null,
+    "description": "constructor - init detail",
+    "lineNumber": 29,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "{\nonClick: will be trigger when the item click,\nlist: the news list data,\nSpinImage:spin image url by webpack,\ndisablePre: should disable pre button or not,\ndisableNext: should disable next button or not,\nloading: should should spin or list,\nonNextClick: will be trigger when the next button click,\nonPreClick: will be trigger when the pre button click,\nquery {\nnumberPerPage: number of news item display per page\nsearch: search text for news item\norderBy: order key name [id, title, body]\norderDesc: order desc or asc\n}\nonQueryChange: will be trigger when the one of the query data change,\n}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "none"
+      ],
+      "spread": false,
+      "description": "constructor don't return anything"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 70,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "props",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#props",
+    "access": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "goPre",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#goPre",
+    "access": null,
+    "description": "goPre - go to pre page",
+    "lineNumber": 38,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 72,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "goNext",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#goNext",
+    "access": null,
+    "description": "goNext - go to next page",
+    "lineNumber": 51,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "changeNumberPerPage",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#changeNumberPerPage",
+    "access": null,
+    "description": "changeNumberPerPage - update number per page",
+    "lineNumber": 65,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "event"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "e",
+        "description": "input event include the number value"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 74,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "changeSearch",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#changeSearch",
+    "access": null,
+    "description": "changeSearch - update search text",
+    "lineNumber": 79,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "event"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "e",
+        "description": "input event include the search text"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 75,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "changeOrderBy",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#changeOrderBy",
+    "access": null,
+    "description": "changeOrderBy - update OrderBy key",
+    "lineNumber": 93,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "event"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "e",
+        "description": "select event include the OrderBy key"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 76,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "changeOrderDesc",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#changeOrderDesc",
+    "access": null,
+    "description": "changeOrderDesc - trigger OrderDesc",
+    "lineNumber": 106,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "self"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 77,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderTitle",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#renderTitle",
+    "access": null,
+    "description": "renderTitle - render the list title",
+    "lineNumber": 119,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the list title dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 78,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderOrderByDdl",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#renderOrderByDdl",
+    "access": null,
+    "description": "renderOrderByDdl - reder order by select dom wrapper",
+    "lineNumber": 129,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "orderBy",
+        "description": "current orderBy key"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the order by select dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 79,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderToolbar",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#renderToolbar",
+    "access": null,
+    "description": "renderToolbar - render toolbar include pre, next, search, order, number\nper page",
+    "lineNumber": 154,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "the toolbar dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 80,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderList",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#renderList",
+    "access": null,
+    "description": "renderList - render the news list",
+    "lineNumber": 198,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "renderLoading",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#renderLoading",
+    "access": null,
+    "description": "render - render the news list",
+    "lineNumber": 216,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/NewsList.js~NewsList",
+    "longname": "app/components/NewsList.js~NewsList#render",
+    "access": null,
+    "description": "render - description",
+    "lineNumber": 227,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "type"
+      ],
+      "spread": false,
+      "description": "description"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 83,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/__mocks__/superagent.js",
+    "memberof": null,
+    "longname": "app/components/__mocks__/superagent.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "/*eslint-disable */\nconst data = [\n  {\n    id: 1,\n    title: 'Work your phone from your sleeve',\n    body: 'CONNECTED jacket swith touchscreen‐like sleeves,navigating gadgets by wiggling your fingers in the air.',\n    img: '/static/images/3b43cfe1ce90f27503e6800fe9ed859a.jpg'\n  },\n  {\n    id: 2,\n    title: 'Google’s answer to Apple Pay',\n    body: 'WHEN in doubt,copy whatever Apple is doing.That’s the approach Google appears to be taking with the...',\n    img: '/static/images/Apple-Pay-main.png'\n  },\n  {\n    id: 3,\n    title: 'HP wants to turn your Mac into a 44-core Windows PC',\n    body: 'If your Mac isn’t fast enough to edit 3D video, HP has a workaround to make it possible. HP’s new...',\n    img: '/static/images/hp-vr-z840-100654241-primary.idge.jpg'\n  },\n  {\n    id: 4,\n    title: 'Apple rebuts DOJ’s appeal in N.Y. meth dealer’s iPhone case',\n    body: 'Apple last week opposed the Department of Justice’s renewed demand that it assist investigators in...',\n    img: '/static/images/iphone-security-100645858-primary.idge.jpg'\n  },\n  {\n    id: 5,\n    title: 'EU investigating Google’s contracts with phone makers',\n    body: 'CONNECTED jacket swith touchscreen‐like sleeves,navigating gadgets by wiggling your fingers in the air...',\n    img: '/static/images/margrethe_vestager-100623958-primary.idge.jpg'\n  },\n  {\n    id: 6,\n    title: 'HBO’s Silicon Valley returns this weekend',\n    body: 'The last episode of Silicon Valley’s previous season began with the protagonist giving an uplifting...',\n    img: '/static/images/silicon-valley-100656364-primary.idge.jpg'\n  },\n  {\n    id: 7,\n    title: 'Network analytics startup provides insight',\n    body: 'Startup Nyansa Inc. today launched a SaaS-based IT network analytics service that can inspect, analyze...',\n    img: '/static/images/founders-final-pr-100656162-primary.idge.jpeg'\n  },\n  {\n    id: 8,\n    title: 'Microsoft adds Android Wear support to Outlook for Android',\n    body: 'How you feel about being able to check your email from your wrist probably depends largely on how you feel...',\n    img: '/static/images/microsoft-outlook-100565586-primary.idge.png'\n  },\n  {\n    id: 9,\n    title: 'Chrome extensions will soon have to tell you what data they collect',\n    body: 'Google is about to make it harder for Chrome extensions to collect your browsing data without letting you...',\n    img: '/static/images/chrome-extensions-100656422-primary.idge.jpg'\n  },\n  {\n    id: 10,\n    title: 'Facebook at Work pushed to ‘later this year’',\n    body: 'The long wait for Facebook at Work continues. The enterprise version of the world’s most popular social...',\n    img: '/static/images/pushing-time-100656408-primary.idge.jpg'\n  }\n]\n/*eslint-disable */\nlet numberPerPage = 0;\nlet offset = 0;\nlet error = new Error('test');\nconst mockSuperagent = {\n  get() {\n    return mockSuperagent;\n  },\n  query(q) {\n    numberPerPage = q.numberPerPage;\n    offset = q.offset;\n    return mockSuperagent;\n  },\n  end(callback) {\n    callback(error, { body: {\n      entities: data.slice(offset, offset + numberPerPage),\n      total: data.length,\n    } });\n    error = null;\n  }\n}\n\nexport default mockSuperagent;\n"
+  },
+  {
+    "__docId__": 84,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "data",
+    "memberof": "app/components/__mocks__/superagent.js",
+    "longname": "app/components/__mocks__/superagent.js~data",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/components/__mocks__/superagent.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 85,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "numberPerPage",
+    "memberof": "app/components/__mocks__/superagent.js",
+    "longname": "app/components/__mocks__/superagent.js~numberPerPage",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/components/__mocks__/superagent.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 65,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 86,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "offset",
+    "memberof": "app/components/__mocks__/superagent.js",
+    "longname": "app/components/__mocks__/superagent.js~offset",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/components/__mocks__/superagent.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 66,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 87,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "error",
+    "memberof": "app/components/__mocks__/superagent.js",
+    "longname": "app/components/__mocks__/superagent.js~error",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/components/__mocks__/superagent.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 67,
+    "undocument": true,
+    "type": {
+      "types": [
+        "Error"
+      ]
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "mockSuperagent",
+    "memberof": "app/components/__mocks__/superagent.js",
+    "longname": "app/components/__mocks__/superagent.js~mockSuperagent",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/components/__mocks__/superagent.js",
+    "importStyle": "mockSuperagent",
+    "description": null,
+    "lineNumber": 68,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 89,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/__tests__/App.js",
+    "memberof": null,
+    "longname": "app/components/__tests__/App.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../NewsList');\njest.unmock('../NewsItem');\njest.unmock('../NewsDetail');\njest.unmock('../App');\njest.unmock('../../State');\njest.unmock('../../utilities/dom');\njest.unmock('../../utilities/componentRender');\n\nimport App from '../App';\nimport { createDom } from '../../utilities/dom';\n\ndescribe('App', () => {\n  it('should handler error', () => {\n    const appContainer = createDom('div');\n    const app = new App(appContainer, '/image-url');\n    app.render();\n    expect(app.state.get().list.length).toBe(0);\n\n    expect(appContainer.node.firstChild.constructor.name)\n      .toBe('HTMLDivElement');\n    expect(appContainer.node.firstChild.firstChild.className)\n      .toBe('news-list');\n  });\n  it('should insert div into container and init call data', () => {\n    const appContainer = createDom('div');\n    const app = new App(appContainer, '/image-url');\n    app.render();\n    expect(app.state.get().list.length).toBe(3);\n\n    expect(appContainer.node.firstChild.constructor.name)\n      .toBe('HTMLDivElement');\n    expect(appContainer.node.firstChild.firstChild.className)\n      .toBe('news-list');\n  });\n  it('should able to select or unselect item', () => {\n    const appContainer = createDom('div');\n    const app = new App(appContainer, '/image-url');\n    app.render();\n    expect(app.state.get().list.length).toBe(3);\n    app.setItem({}, app.state.get().list[0]);\n    expect(appContainer.node.firstChild.firstChild.className)\n      .toBe('news-detail');\n\n    app.clearItem();\n    expect(appContainer.node.firstChild.firstChild.className)\n      .toBe('news-list');\n  });\n  it('should change the Query', () => {\n    const appContainer = createDom('div');\n    const app = new App(appContainer, '/image-url');\n    app.render();\n\n\n    app.changeQuery({\n      ...app,\n      numberPerPage: 10,\n    });\n    expect(app.state.get().list.length).toBe(10);\n    app.changeQuery({\n      ...app,\n      numberPerPage: 0,\n    });\n    expect(app.state.get().list.length).toBe(1);\n  });\n  it('should be able to go next', () => {\n    const appContainer = createDom('div');\n    const app = new App(appContainer, '/image-url');\n    app.render();\n    app.goNext();\n    expect(app.state.get().list[0].id).toBe(4);\n  });\n  it('should be able to go pre', () => {\n    const appContainer = createDom('div');\n    const app = new App(appContainer, '/image-url');\n    app.render();\n    app.goNext();\n    app.goNext();\n    app.goPre();\n    expect(app.state.get().list[0].id).toBe(4);\n    app.goPre();\n    expect(app.state.get().list[0].id).toBe(1);\n    app.goPre();\n    expect(app.state.get().list[0].id).toBe(1);\n    expect(app.state.get().list[0].id).toBe(1);\n  });\n});\n"
+  },
+  {
+    "__docId__": 90,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/__tests__/NewsDetail.js",
+    "memberof": null,
+    "longname": "app/components/__tests__/NewsDetail.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../NewsDetail');\njest.unmock('../../utilities/dom');\n\nimport NewsDetail from '../NewsDetail';\n\ndescribe('NewsDetail', () => {\n  it('should render a div as the root', () => {\n    const data = { body: 123, title: 222, img: 333 };\n    const detail = new NewsDetail({ data });\n    const node = detail.render();\n    expect(node.node.constructor.name).toBe('HTMLDivElement');\n  });\n  it('should call props callback when call onBackClick', () => {\n    let onClickIndicator = {};\n    const data = { body: 123, title: 222, img: 333 };\n    const detail = new NewsDetail({\n      onClick: (e, d) => { onClickIndicator = d; },\n      data,\n    });\n    detail.onBackClick({});\n    expect(onClickIndicator.body).toBe(data.body);\n  });\n});\n"
+  },
+  {
+    "__docId__": 91,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/__tests__/NewsItem.js",
+    "memberof": null,
+    "longname": "app/components/__tests__/NewsItem.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../NewsItem');\njest.unmock('../../utilities/dom');\n\nimport NewsItem from '../NewsItem';\n\ndescribe('NewsItem', () => {\n  it('should render a div as the root', () => {\n    const data = { body: 123, title: 222, img: 333 };\n    const detail = new NewsItem({ data });\n    const node = detail.render();\n    expect(node.node.constructor.name).toBe('HTMLDivElement');\n  });\n  it('should call props callback when call onBackClick', () => {\n    let onClickIndicator = {};\n    const data = { body: 123, title: 222, img: 333 };\n    const detail = new NewsItem({\n      onClick: (e, d) => { onClickIndicator = d; },\n      data,\n    });\n    detail.onClick({});\n    expect(onClickIndicator.body).toBe(data.body);\n  });\n});\n"
+  },
+  {
+    "__docId__": 92,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/__tests__/NewsList.js",
+    "memberof": null,
+    "longname": "app/components/__tests__/NewsList.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../NewsList');\njest.unmock('../../utilities/dom');\njest.unmock('../NewsItem');\njest.unmock('../../utilities/componentRender');\n\nimport NewsList from '../NewsList';\n\ndescribe('NewsList', () => {\n  it('should render a div as the root', () => {\n    const prop = {\n      list: [{ body: 123, title: 222, img: 333 }],\n      loading: false,\n      query: {},\n    };\n    const detail = new NewsList(prop);\n    const node = detail.render();\n\n    expect(node.node.constructor.name).toBe('HTMLDivElement');\n    expect(node.node.lastChild.constructor.name).toBe('HTMLUListElement');\n  });\n  it('should render spin when loading', () => {\n    const prop = {\n      list: [{ body: 123, title: 222, img: 333 }],\n      loading: true,\n      query: {},\n    };\n    const detail = new NewsList(prop);\n    const node = detail.render();\n\n    expect(node.node.constructor.name).toBe('HTMLDivElement');\n    expect(node.node.lastChild.constructor.name).toBe('HTMLDivElement');\n  });\n  it('should not call props callback when disable goPre', () => {\n    let onClickIndicator = null;\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onPreClick: () => { onClickIndicator = list; },\n      list,\n      query: {},\n      disablePre: true,\n    });\n    detail.goPre({});\n    expect(onClickIndicator).toBe(null);\n  });\n  it('should call props callback when change orderBy', () => {\n    let onClickIndicator = null;\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onQueryChange: ({ orderBy }) => { onClickIndicator = orderBy; },\n      list,\n      query: {},\n      disableNext: true,\n    });\n    detail.changeOrderBy({ target: { value: 'test' } });\n    expect(onClickIndicator).toBe('test');\n  });\n  it('should call props callback when change search', () => {\n    let onClickIndicator = null;\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onQueryChange: ({ search }) => { onClickIndicator = search; },\n      list,\n      query: {},\n      disableNext: true,\n    });\n    detail.changeSearch({ target: { value: 'test' } });\n    expect(onClickIndicator).toBe('test');\n  });\n  it('should call props callback when change OrderDesc', () => {\n    let onClickIndicator = null;\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onQueryChange: ({ orderDesc }) => { onClickIndicator = orderDesc; },\n      list,\n      query: { orderDesc: true },\n    });\n    detail.changeOrderDesc();\n    expect(onClickIndicator).toBe(false);\n  });\n  it('should not call props callback when disable goNext', () => {\n    let onClickIndicator = null;\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onNextClick: () => { onClickIndicator = list; },\n      list,\n      query: {},\n      disableNext: true,\n    });\n    detail.goNext({});\n    expect(onClickIndicator).toBe(null);\n  });\n  it('should call props callback when call goPre', () => {\n    let onClickIndicator = {};\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onPreClick: () => { onClickIndicator = list; },\n      list,\n      query: {},\n    });\n    detail.goPre({});\n    expect(onClickIndicator).toBe(list);\n  });\n  it('should call props callback when call goNext', () => {\n    let onClickIndicator = {};\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onNextClick: () => { onClickIndicator = list; },\n      list,\n      query: {},\n    });\n    detail.goNext({});\n    expect(onClickIndicator).toBe(list);\n  });\n  it('should call props callback when call changeNumberPerPage', () => {\n    let onClickIndicator = {};\n    const list = [{ body: 123, title: 222, img: 333 }];\n    const detail = new NewsList({\n      onQueryChange: () => { onClickIndicator = list; },\n      list,\n      query: {},\n    });\n    detail.changeNumberPerPage({ target: { value: 123 } });\n    expect(onClickIndicator).toBe(list);\n  });\n});\n"
+  },
+  {
+    "__docId__": 93,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/index.js",
+    "memberof": null,
+    "longname": "app/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "require('./less/index.less');\n\nimport App from './components/App';\nimport ErrorHandler from './ErrorHandler';\nimport { wrapDom } from './utilities/dom';\nimport SpinImage from './images/loading.gif';\n\nwindow.onerror = ErrorHandler;\nwindow.newsRenderer = function newsRenderer(appContainer) {\n  const app = new App(wrapDom(appContainer), SpinImage);\n  app.render();\n};\n"
+  },
+  {
+    "__docId__": 94,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "newsRenderer",
+    "memberof": "app/index.js",
+    "longname": "app/index.js~newsRenderer",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [
+      {
+        "name": "appContainer",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 95,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/utilities/__tests__/componentRender.js",
+    "memberof": null,
+    "longname": "app/utilities/__tests__/componentRender.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../componentRender');\n\nimport componentRender from '../componentRender';\n\nclass SampleComp {\n  constructor(props) {\n    this.props = props;\n  }\n  render() {\n    return this.props;\n  }\n}\n\ndescribe('componentRender', () => {\n  it('should create instance with props and has render function', () => {\n    const rendered = componentRender(SampleComp, { test: 123 });\n    expect(rendered.test).toBe(123);\n  });\n});\n"
+  },
+  {
+    "__docId__": 96,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "SampleComp",
+    "memberof": "app/utilities/__tests__/componentRender.js",
+    "longname": "app/utilities/__tests__/componentRender.js~SampleComp",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/utilities/__tests__/componentRender.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 97,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/utilities/__tests__/componentRender.js~SampleComp",
+    "longname": "app/utilities/__tests__/componentRender.js~SampleComp#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 98,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "props",
+    "memberof": "app/utilities/__tests__/componentRender.js~SampleComp",
+    "longname": "app/utilities/__tests__/componentRender.js~SampleComp#props",
+    "access": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/utilities/__tests__/componentRender.js~SampleComp",
+    "longname": "app/utilities/__tests__/componentRender.js~SampleComp#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 100,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/utilities/__tests__/dom.js",
+    "memberof": null,
+    "longname": "app/utilities/__tests__/dom.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../dom');\n\nimport { createDom, getDom, wrapDom } from '../dom';\n\ndescribe('dom', () => {\n  it('should create dom with a node attr', () => {\n    const dom = createDom({ test: 123 });\n    expect(dom.node.test).toBe(123);\n  });\n  it('should has empty func', () => {\n    const dom = createDom({ test: 123 });\n    expect(dom.empty().node).toBe(dom.node);\n  });\n  it('should has append func', () => {\n    const node = {\n      appendChild: (child) => {\n        node.child = child;\n      },\n    };\n    const dom = createDom(node);\n    expect(dom.append({ node: { newNode: true } }).node.child.newNode)\n      .toBe(true);\n  });\n  it('should has setClass func', () => {\n    const dom = createDom({});\n    expect(dom.setClass('hello').node.className).toBe('hello');\n  });\n  it('should has setAttr func', () => {\n    const node = {\n      setAttribute: (key, val) => {\n        node[key] = val;\n      },\n    };\n    const dom = createDom(node);\n    expect(dom.setAttr('key', 'val').node.key).toBe('val');\n  });\n  it('should has innerHTML func', () => {\n    const dom = createDom({});\n    expect(dom.innerHTML('hello').node.innerHTML).toBe('hello');\n  });\n  it('should has on func', () => {\n    const node = {\n      addEventListener: (key, val) => {\n        node[key] = val;\n      },\n    };\n    const dom = createDom(node);\n    expect(dom.on('key', 'val').node.key).toBe('val');\n  });\n  it('should create dom with a node attr', () => {\n    const dom = getDom('nothing');\n    expect(dom.node).toBe(null);\n  });\n  it('should wrapDom dom same with createDom', () => {\n    const dom = wrapDom({ test: 123 });\n    expect(dom.node.test).toBe(123);\n  });\n});\n  // on(event, handler) {\n  //   this.node.addEventListener(event, handler);\n  //   retu\n"
+  },
+  {
+    "__docId__": 101,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/utilities/__tests__/shallowEqual.js",
+    "memberof": null,
+    "longname": "app/utilities/__tests__/shallowEqual.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "jest.unmock('../shallowEqual');\n\nimport shallowEqual from '../shallowEqual';\n\ndescribe('shallowEqual', () => {\n  it('1 should equal to 1', () => {\n    expect(shallowEqual(1, 1)).toBe(true);\n  });\n  it('objA should equal to objB', () => {\n    const objA = {\n      a: 1,\n      b: {\n        data: 123,\n        id: '1234SDF',\n      },\n    };\n    const objB = {\n      ...objA,\n      a: 1,\n    };\n    expect(shallowEqual(objA, objB)).toBe(true);\n  });\n  it('objA should not equal to objB', () => {\n    const objA = {\n      a: 1,\n      b: {\n        data: 123,\n        id: '1234SDF',\n      },\n    };\n    const objB = {\n      ...objA,\n      a: 2,\n    };\n    expect(shallowEqual(objA, objB)).toBe(false);\n  });\n});\n"
+  },
+  {
+    "__docId__": 102,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/utilities/componentRender.js",
+    "memberof": null,
+    "longname": "app/utilities/componentRender.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "\n/**\n * componentRender - render the component\n *\n * @param  {class} Component the component class\n * @param  {obj} props     properties\n * @return {dom obj}           a dom wrapper\n */\nexport default function componentRender(Component, props) {\n  const _comp = new Component(props);\n  return _comp.render();\n}\n"
+  },
+  {
+    "__docId__": 103,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "componentRender",
+    "memberof": "app/utilities/componentRender.js",
+    "longname": "app/utilities/componentRender.js~componentRender",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/utilities/componentRender.js",
+    "importStyle": "componentRender",
+    "description": "componentRender - render the component",
+    "lineNumber": 9,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "class"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "Component",
+        "description": "the component class"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "obj"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "properties"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom obj"
+      ],
+      "spread": false,
+      "description": "a dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 104,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/utilities/dom.js",
+    "memberof": null,
+    "longname": "app/utilities/dom.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "\n\nclass Dom {\n  constructor(tag) {\n    if (typeof tag === 'string') {\n      this.node = document.createElement(tag);\n    } else {\n      this.node = tag;\n    }\n  }\n  empty() {\n    while (this.node.firstChild) {\n      this.node.removeChild(this.node.firstChild);\n    }\n    return this;\n  }\n  append(dom) {\n    this.node.appendChild(dom.node);\n    return this;\n  }\n  setClass(classNames) {\n    this.node.className = classNames;\n    return this;\n  }\n  setAttr(key, val) {\n    this.node.setAttribute(key, val);\n    return this;\n  }\n  innerHTML(inner) {\n    this.node.innerHTML = inner;\n    return this;\n  }\n  on(event, handler) {\n    this.node.addEventListener(event, handler);\n    return this;\n  }\n}\n\n\n/**\n * createDom - create a dom wrapper with a given html tag\n *\n * @param  {string} tag html tag name\n * @return {dom wrapper}     dom wrapper\n */\nexport function createDom(tag) {\n  return new Dom(tag);\n}\n\n/**\n * getDom - find a dom by id and creat wrapper\n *\n * @param  {string} id html dom id\n * @return {dom wrapper}     dom wrapper\n */\nexport function getDom(id) {\n  return new Dom(document.getElementById(id));\n}\n\n/**\n * wrapDom - wrap an exist dom into dom wrapper\n *\n * @param  {dom} node an exist dom node\n * @return {dom wrapper}     dom wrapper\n */\nexport function wrapDom(node) {\n  return createDom(node);\n}\n"
+  },
+  {
+    "__docId__": 105,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Dom",
+    "memberof": "app/utilities/dom.js",
+    "longname": "app/utilities/dom.js~Dom",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/utilities/dom.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 106,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "params": [
+      {
+        "name": "tag",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 107,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "node",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#node",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 108,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "node",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#node",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 109,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "empty",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#empty",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 110,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "append",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#append",
+    "access": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "dom",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 111,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setClass",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#setClass",
+    "access": null,
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "classNames",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 112,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setAttr",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#setAttr",
+    "access": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "val",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 113,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "innerHTML",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#innerHTML",
+    "access": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [
+      {
+        "name": "inner",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 114,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "on",
+    "memberof": "app/utilities/dom.js~Dom",
+    "longname": "app/utilities/dom.js~Dom#on",
+    "access": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "handler",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 115,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "createDom",
+    "memberof": "app/utilities/dom.js",
+    "longname": "app/utilities/dom.js~createDom",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/utilities/dom.js",
+    "importStyle": "{createDom}",
+    "description": "createDom - create a dom wrapper with a given html tag",
+    "lineNumber": 46,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tag",
+        "description": "html tag name"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 116,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "getDom",
+    "memberof": "app/utilities/dom.js",
+    "longname": "app/utilities/dom.js~getDom",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/utilities/dom.js",
+    "importStyle": "{getDom}",
+    "description": "getDom - find a dom by id and creat wrapper",
+    "lineNumber": 56,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "html dom id"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 117,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "wrapDom",
+    "memberof": "app/utilities/dom.js",
+    "longname": "app/utilities/dom.js~wrapDom",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/utilities/dom.js",
+    "importStyle": "{wrapDom}",
+    "description": "wrapDom - wrap an exist dom into dom wrapper",
+    "lineNumber": 66,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "dom"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "node",
+        "description": "an exist dom node"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "dom wrapper"
+      ],
+      "spread": false,
+      "description": "dom wrapper"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 118,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/utilities/shallowEqual.js",
+    "memberof": null,
+    "longname": "app/utilities/shallowEqual.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "\nfunction allKeyDataSame(objA, objB, keys) {\n  // Test for A's keys different from B.\n  for (let i = 0; i < keys.length; i++) {\n    const key = keys[i];\n    if (!hasOwnProperty.call(objB, key) || objA[key] !== objB[key]) {\n      return false;\n    }\n  }\n  return true;\n}\nfunction allKeySame(objA, objB) {\n  const keysA = Object.keys(objA);\n  const keysB = Object.keys(objB);\n\n  if (keysA.length !== keysB.length) {\n    return false;\n  }\n\n  return allKeyDataSame(objA, objB, keysA);\n}\n\n/**\n * shallowEqual - compare to value same or not, only do shallow compare for obj\n *\n * @param  {obj} objA first value\n * @param  {obj} objB second value\n * @return {bool}      equal or not\n */\nexport default function shallowEqual(objA, objB) {\n  return objA === objB || allKeySame(objA, objB);\n}\n"
+  },
+  {
+    "__docId__": 119,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "allKeyDataSame",
+    "memberof": "app/utilities/shallowEqual.js",
+    "longname": "app/utilities/shallowEqual.js~allKeyDataSame",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/utilities/shallowEqual.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "params": [
+      {
+        "name": "objA",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "objB",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "keys",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 120,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "allKeySame",
+    "memberof": "app/utilities/shallowEqual.js",
+    "longname": "app/utilities/shallowEqual.js~allKeySame",
+    "access": null,
+    "export": false,
+    "importPath": "news-renderer/app/utilities/shallowEqual.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "objA",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "objB",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 121,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "shallowEqual",
+    "memberof": "app/utilities/shallowEqual.js",
+    "longname": "app/utilities/shallowEqual.js~shallowEqual",
+    "access": null,
+    "export": true,
+    "importPath": "news-renderer/app/utilities/shallowEqual.js",
+    "importStyle": "shallowEqual",
+    "description": "shallowEqual - compare to value same or not, only do shallow compare for obj",
+    "lineNumber": 30,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "obj"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "objA",
+        "description": "first value"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "obj"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "objB",
+        "description": "second value"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "bool"
+      ],
+      "spread": false,
+      "description": "equal or not"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 123,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 124,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 125,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 126,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 127,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 128,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 129,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 130,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 131,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 132,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 133,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 134,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 135,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 136,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 137,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 138,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 139,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 140,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 141,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 142,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 143,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 144,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 145,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 146,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 147,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 148,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 149,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 150,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 151,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 152,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 153,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 154,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 155,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 156,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 157,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 158,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 159,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 160,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 161,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 162,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 163,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 164,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 165,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 166,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 167,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 168,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 169,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 171,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 172,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 173,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 174,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 175,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 176,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 177,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 178,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  }
+]

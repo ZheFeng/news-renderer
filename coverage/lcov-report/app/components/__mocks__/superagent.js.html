@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/components/__mocks__/superagent.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">app/components/__mocks__/</a> superagent.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>13/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/3</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>12/12</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*eslint-disable */
+const data = [
+  {
+    id: 1,
+    title: 'Work your phone from your sleeve',
+    body: 'CONNECTED jacket swith touchscreen‐like sleeves,navigating gadgets by wiggling your fingers in the air.',
+    img: '/static/images/3b43cfe1ce90f27503e6800fe9ed859a.jpg'
+  },
+  {
+    id: 2,
+    title: 'Google’s answer to Apple Pay',
+    body: 'WHEN in doubt,copy whatever Apple is doing.That’s the approach Google appears to be taking with the...',
+    img: '/static/images/Apple-Pay-main.png'
+  },
+  {
+    id: 3,
+    title: 'HP wants to turn your Mac into a 44-core Windows PC',
+    body: 'If your Mac isn’t fast enough to edit 3D video, HP has a workaround to make it possible. HP’s new...',
+    img: '/static/images/hp-vr-z840-100654241-primary.idge.jpg'
+  },
+  {
+    id: 4,
+    title: 'Apple rebuts DOJ’s appeal in N.Y. meth dealer’s iPhone case',
+    body: 'Apple last week opposed the Department of Justice’s renewed demand that it assist investigators in...',
+    img: '/static/images/iphone-security-100645858-primary.idge.jpg'
+  },
+  {
+    id: 5,
+    title: 'EU investigating Google’s contracts with phone makers',
+    body: 'CONNECTED jacket swith touchscreen‐like sleeves,navigating gadgets by wiggling your fingers in the air...',
+    img: '/static/images/margrethe_vestager-100623958-primary.idge.jpg'
+  },
+  {
+    id: 6,
+    title: 'HBO’s Silicon Valley returns this weekend',
+    body: 'The last episode of Silicon Valley’s previous season began with the protagonist giving an uplifting...',
+    img: '/static/images/silicon-valley-100656364-primary.idge.jpg'
+  },
+  {
+    id: 7,
+    title: 'Network analytics startup provides insight',
+    body: 'Startup Nyansa Inc. today launched a SaaS-based IT network analytics service that can inspect, analyze...',
+    img: '/static/images/founders-final-pr-100656162-primary.idge.jpeg'
+  },
+  {
+    id: 8,
+    title: 'Microsoft adds Android Wear support to Outlook for Android',
+    body: 'How you feel about being able to check your email from your wrist probably depends largely on how you feel...',
+    img: '/static/images/microsoft-outlook-100565586-primary.idge.png'
+  },
+  {
+    id: 9,
+    title: 'Chrome extensions will soon have to tell you what data they collect',
+    body: 'Google is about to make it harder for Chrome extensions to collect your browsing data without letting you...',
+    img: '/static/images/chrome-extensions-100656422-primary.idge.jpg'
+  },
+  {
+    id: 10,
+    title: 'Facebook at Work pushed to ‘later this year’',
+    body: 'The long wait for Facebook at Work continues. The enterprise version of the world’s most popular social...',
+    img: '/static/images/pushing-time-100656408-primary.idge.jpg'
+  }
+]
+/*eslint-disable */
+let numberPerPage = 0;
+let offset = 0;
+let error = new Error('test');
+const mockSuperagent = {
+  get() {
+    return mockSuperagent;
+  },
+  query(q) {
+    numberPerPage = q.numberPerPage;
+    offset = q.offset;
+    return mockSuperagent;
+  },
+  end(callback) {
+    callback(error, { body: {
+      entities: data.slice(offset, offset + numberPerPage),
+      total: data.length,
+    } });
+    error = null;
+  }
+}
+&nbsp;
+export default mockSuperagent;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 19 2016 01:38:20 GMT+1000 (AEST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

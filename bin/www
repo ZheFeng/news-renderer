@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'development';
+}
+const winston = require('winston');
+const moment = require('moment');
+const ts = moment().format('MM-DD HH:mm:ss');
+winston.info(`[${ts}]: wating to start the server...`);
+
+require('babel-core/register');
+require('../server');

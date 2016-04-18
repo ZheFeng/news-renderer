@@ -1,0 +1,25 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",,
+  "globals": {
+    "it": true,
+    "describe": true,
+    "expect": true,
+    "jest": true,
+    "__DEV__": true,
+    "__PRERELEASE__": true
+  },
+  "rules": {
+    "new-cap": [2, {
+      "newIsCap": true,
+      "capIsNew": false
+    }],
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "max-len": [2, 80, 2],
+    "max-depth": [2, 2],
+    "max-nested-callbacks": [2, 3],
+    "max-params": [2, 8],
+    "max-statements": [2, 20],
+    "complexity": [2, 5]
+  }
+}

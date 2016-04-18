@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">app/components/NewsList.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/State.js~State.html">State</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ErrorHandler">ErrorHandler</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">__mocks__</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ErrorHandler">ErrorHandler</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/NewsDetail.js~NewsDetail.html">NewsDetail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/NewsItem.js~NewsItem.html">NewsItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/NewsList.js~NewsList.html">NewsList</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/__mocks__</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mockSuperagent">mockSuperagent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">utilities</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-componentRender">componentRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createDom">createDom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getDom">getDom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-wrapDom">wrapDom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-shallowEqual">shallowEqual</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/components/NewsList.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import componentRender from &apos;../utilities/componentRender&apos;;
+import { createDom } from &apos;../utilities/dom&apos;;
+import NewsItem from &apos;./NewsItem&apos;;
+
+/** News list view */
+class NewsList {
+  /**
+   * constructor - init detail
+   *
+   * @param  {object} props {
+   * onClick: will be trigger when the item click,
+   * list: the news list data,
+   * SpinImage:spin image url by webpack,
+   * disablePre: should disable pre button or not,
+   * disableNext: should disable next button or not,
+   * loading: should should spin or list,
+   * onNextClick: will be trigger when the next button click,
+   * onPreClick: will be trigger when the pre button click,
+   * query {
+     * numberPerPage: number of news item display per page
+     * search: search text for news item
+     * orderBy: order key name [id, title, body]
+     * orderDesc: order desc or asc
+     * }
+   * onQueryChange: will be trigger when the one of the query data change,
+   * }
+   * @return {none}               constructor don&apos;t return anything
+   */
+  constructor(props) {
+    this.props = props;
+  }
+
+  /**
+   * goPre - go to pre page
+   *
+   * @return {self}
+   */
+  goPre() {
+    const { disablePre } = this.props;
+    if (!disablePre) {
+      this.props.onPreClick();
+    }
+    return this;
+  }
+
+  /**
+   * goNext - go to next page
+   *
+   * @return {self}
+   */
+  goNext() {
+    const { disableNext } = this.props;
+    if (!disableNext) {
+      this.props.onNextClick();
+    }
+    return this;
+  }
+
+  /**
+   * changeNumberPerPage - update number per page
+   *
+   * @param  {event} e input event include the number value
+   * @return {self}
+   */
+  changeNumberPerPage(e) {
+    this.props.onQueryChange({
+      ...this.props.query,
+      numberPerPage: parseInt(e.target.value, 10),
+    });
+    return this;
+  }
+
+  /**
+   * changeSearch - update search text
+   *
+   * @param  {event} e input event include the search text
+   * @return {self}
+   */
+  changeSearch(e) {
+    this.props.onQueryChange({
+      ...this.props.query,
+      search: e.target.value,
+    });
+    return this;
+  }
+
+  /**
+   * changeOrderBy - update OrderBy key
+   *
+   * @param  {event} e select event include the OrderBy key
+   * @return {self}
+   */
+  changeOrderBy(e) {
+    this.props.onQueryChange({
+      ...this.props.query,
+      orderBy: e.target.value,
+    });
+    return this;
+  }
+
+  /**
+   * changeOrderDesc - trigger OrderDesc
+   *
+   * @return {self}
+   */
+  changeOrderDesc() {
+    this.props.onQueryChange({
+      ...this.props.query,
+      orderDesc: !this.props.query.orderDesc,
+    });
+    return this;
+  }
+
+  /**
+   * renderTitle - render the list title
+   *
+   * @return {dom wrapper}  the list title dom wrapper
+   */
+  renderTitle() {
+    return createDom(&apos;h2&apos;).setClass(&apos;title&apos;).innerHTML(&apos;News List&apos;);
+  }
+
+  /**
+   * renderOrderByDdl - reder order by select dom wrapper
+   *
+   * @param  {string} orderBy current orderBy key
+   * @return {dom wrapper}  the order by select dom wrapper
+   */
+  renderOrderByDdl(orderBy) {
+    const select = createDom(&apos;select&apos;)
+      .on(&apos;change&apos;, this.changeOrderBy.bind(this));
+    select.node.value = orderBy;
+    const keys = [&apos;id&apos;, &apos;title&apos;, &apos;body&apos;];
+
+    keys.forEach(key =&gt; {
+      const option = createDom(&apos;option&apos;)
+        .setAttr(&apos;value&apos;, key)
+        .innerHTML(key);
+      if (key === orderBy) {
+        option.setAttr(&apos;selected&apos;, true);
+      }
+      select.append(option);
+    });
+
+    return select;
+  }
+
+  /**
+   * renderToolbar - render toolbar include pre, next, search, order, number
+   * per page
+   *
+   * @return {dom wrapper}  the toolbar dom wrapper
+   */
+  renderToolbar() {
+    const { search, numberPerPage, orderBy, orderDesc } = this.props.query;
+    const { disablePre, disableNext } = this.props;
+    const toolbar = createDom(&apos;div&apos;).setClass(&apos;toolbar&apos;);
+    const preBtn = createDom(&apos;button&apos;)
+      .setClass(`news-button left ${disablePre ? &apos;disable&apos; : &apos;&apos;}`)
+      .innerHTML(&apos;Pre&apos;).on(&apos;click&apos;, this.goPre.bind(this));
+    const nextBtn = createDom(&apos;button&apos;)
+      .setClass(`news-button right ${disableNext ? &apos;disable&apos; : &apos;&apos;}`)
+      .innerHTML(&apos;Next&apos;).on(&apos;click&apos;, this.goNext.bind(this));
+
+    const span = createDom(&apos;span&apos;).innerHTML(&apos;Number Per Page: &apos;);
+    const input = createDom(&apos;input&apos;)
+      .setAttr(&apos;type&apos;, &apos;text&apos;)
+      .setAttr(&apos;value&apos;, numberPerPage)
+      .on(&apos;change&apos;, this.changeNumberPerPage.bind(this));
+
+
+    const searchInput = createDom(&apos;input&apos;)
+    .setAttr(&apos;type&apos;, &apos;text&apos;)
+    .setAttr(&apos;placeholder&apos;, &apos;Search&apos;)
+    .setAttr(&apos;value&apos;, search)
+    .on(&apos;change&apos;, this.changeSearch.bind(this));
+
+
+    const orderBtn = createDom(&apos;button&apos;).setClass(&apos;news-button&apos;)
+      .innerHTML(orderDesc ? &apos;&amp;darr;&apos; : &apos;&amp;uarr;&apos;)
+      .on(&apos;click&apos;, this.changeOrderDesc.bind(this));
+
+    const inputContainer = createDom(&apos;div&apos;)
+      .append(span).append(input)
+      .append(searchInput)
+      .append(createDom(&apos;span&apos;).innerHTML(&apos; Order&apos;))
+      .append(this.renderOrderByDdl(orderBy))
+      .append(orderBtn);
+    return toolbar.append(preBtn).append(nextBtn)
+      .append(inputContainer);
+  }
+
+  /**
+   * renderList - render the news list
+   *
+   * @return {dom wrapper}
+   */
+  renderList() {
+    const ul = createDom(&apos;ul&apos;).setClass(&apos;list&apos;);
+    const { list, onClick } = this.props;
+
+    list.forEach(item =&gt; {
+      const li = createDom(&apos;li&apos;).setClass(&apos;item&apos;);
+      const itemEle = componentRender(NewsItem, { data: item, onClick });
+      ul.append(li.append(itemEle));
+    });
+
+    return ul;
+  }
+
+  /**
+   * render - render the news list
+   *
+   * @return {dom wrapper}
+   */
+  renderLoading() {
+    return createDom(&apos;div&apos;)
+      .setClass(&apos;news-loading&apos;)
+      .append(createDom(&apos;img&apos;).setAttr(&apos;src&apos;, this.props.SpinImage));
+  }
+
+  /**
+   * render - description
+   *
+   * @return {type}  description
+   */
+  render() {
+    const { loading } = this.props;
+    const container = createDom(&apos;div&apos;).setClass(&apos;news-list&apos;);
+    container.append(this.renderTitle()).append(this.renderToolbar());
+
+    if (loading) {
+      return container.append(this.renderLoading());
+    }
+    return container.append(this.renderList());
+  }
+}
+
+export default NewsList;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

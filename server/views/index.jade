@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div#nav
+    a(href="/doc" target="_blank") Documentation
+    a(href="/coverage" target="_blank") Test Coverage
+  div#app
+  each script in scripts
+    script(type="text/javascript", src=script)
+
+  script.
+    window.newsRenderer(document.getElementById('app'));
