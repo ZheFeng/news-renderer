@@ -58,8 +58,8 @@ import { wrapDom } from &apos;./utilities/dom&apos;;
 import SpinImage from &apos;./images/loading.gif&apos;;
 
 window.onerror = ErrorHandler;
-window.newsRenderer = function newsRenderer(appContainer) {
-  const app = new App(wrapDom(appContainer), SpinImage);
+window.newsRenderer = function newsRenderer(appContainer, ...others) {
+  const app = new App(wrapDom(appContainer), SpinImage, ...others);
   app.render();
 };
 </code></pre>

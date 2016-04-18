@@ -2198,7 +2198,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "require('./less/index.less');\n\nimport App from './components/App';\nimport ErrorHandler from './ErrorHandler';\nimport { wrapDom } from './utilities/dom';\nimport SpinImage from './images/loading.gif';\n\nwindow.onerror = ErrorHandler;\nwindow.newsRenderer = function newsRenderer(appContainer) {\n  const app = new App(wrapDom(appContainer), SpinImage);\n  app.render();\n};\n"
+    "content": "require('./less/index.less');\n\nimport App from './components/App';\nimport ErrorHandler from './ErrorHandler';\nimport { wrapDom } from './utilities/dom';\nimport SpinImage from './images/loading.gif';\n\nwindow.onerror = ErrorHandler;\nwindow.newsRenderer = function newsRenderer(appContainer, ...others) {\n  const app = new App(wrapDom(appContainer), SpinImage, ...others);\n  app.render();\n};\n"
   },
   {
     "__docId__": 94,
@@ -2221,6 +2221,13 @@
         "types": [
           "*"
         ]
+      },
+      {
+        "name": "others",
+        "types": [
+          "...*"
+        ],
+        "spread": true
       }
     ],
     "generator": false

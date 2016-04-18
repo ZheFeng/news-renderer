@@ -49,7 +49,105 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="news-renderer">News Renderer</h1>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="news-renderer-coding-challenge">News Renderer Coding Challenge</h1>
+<p><strong><a href="https://afternoon-tundra-63516.herokuapp.com/" title="Live Demo">Live Demo</a></strong></p>
+<p><strong><a href="https://afternoon-tundra-63516.herokuapp.com/doc/" title="Live Full Documentation">Live Full Documentation</a></strong></p>
+<p><strong><a href="https://afternoon-tundra-63516.herokuapp.com/coverage/" title="Live Test Coverage">Live Test Coverage</a></strong></p>
+<p>The live site is hosted on heroku, if you feel the speed is slow, you and setup and run in your local machine.</p>
+<h3 id="environment">Environment</h3>
+<p>This app is build base on nodejs. If you don&apos;t have nodejs installed in your system, here is the <a href="https://nodejs.org/en/" title="Install Nodejs">instruction</a>.</p>
+<h3 id="install-dependencies">Install dependencies</h3>
+<p>To run the app locally, you need to install the dependency packages first.</p>
+<pre><code><code class="source-code prettyprint">npm install</code>
+</code></pre><h3 id="start-the-app-development-">Start the app (development)</h3>
+<p>To run the app, you just need to simply type <code>npm start</code>. As default, the <strong>NODE_ENV</strong> is set to <strong>development</strong></p>
+<pre><code><code class="source-code prettyprint">npm start
+&gt; news-renderer@0.0.0 start /Users/zhefeng/development/news-renderer
+&gt; node --harmony ./bin/www
+
+info: [04-19 01:57:07]: wating to start the server...
+info: [development] Starting server...
+info: Starting development server...
+info: Dev server is now running on http://localhost:3000
+info: [04-19 01:57:12]: Server started, listening on port 8080</code>
+</code></pre><p>Then, you can access <a href="http://localhost:3000" title="localhost:3000">localhost:3000</a></p>
+<h3 id="start-the-app-production-">Start the app (production)</h3>
+<p>To start the app in production env, you need to build it first. The webpack will build all necessary scripts and css into one js file with hashed file name, then we can easy to cache it with out worry about update-cache issue.</p>
+<pre><code><code class="source-code prettyprint">npm run build</code>
+</code></pre><p>When you run build, we will auto test, build coverage report and build documentation <strong>automatically</strong>.</p>
+<p>Then you can start the server when NODE_ENV:</p>
+<pre><code><code class="source-code prettyprint">NODE_ENV=production npm start
+&gt; news-renderer@0.0.0 start /Users/zhefeng/development/news-renderer
+&gt; node --harmony ./bin/www
+
+info: [04-19 02:03:33]: wating to start the server...
+info: [production] Starting server...
+info: [04-19 02:03:37]: Server started, listening on port 3000</code>
+</code></pre><p>Then, you can access <a href="http://localhost:3000" title="localhost:3000">localhost:3000</a></p>
+<h3 id="test-the-app">Test the app</h3>
+<p>To test the app, just simply type <code>npm test</code>.</p>
+<pre><code><code class="source-code prettyprint">npm test
+&gt; news-renderer@0.0.0 pretest /Users/zhefeng/development/news-renderer
+&gt; rm -rf coverage &amp;&amp; rm -rf doc
+
+
+&gt; news-renderer@0.0.0 test /Users/zhefeng/development/news-renderer
+&gt; jest --coverage --verbose
+
+Using Jest CLI v11.0.2, jasmine2, babel-jest
+ PASS  app/utilities/__tests__/shallowEqual.js (0.41s)
+shallowEqual
+  &#x2713; it 1 should equal to 1
+  &#x2713; it objA should equal to objB
+  &#x2713; it objA should not equal to objB
+
+ PASS  app/components/__tests__/NewsDetail.js (0.474s)
+NewsDetail
+  &#x2713; it should render a div as the root
+  &#x2713; it should call props callback when call onBackClick
+
+.........
+
+39 tests passed (39 total in 8 test suites, run time 2.923s)</code>
+</code></pre><p>After test, the coverage html report will automatically generated, you can access by <a href="http://localhost:3000/coverage/index.html" title="Test Coverage">Test Coverage</a></p>
+<h3 id="build-documentation">Build documentation</h3>
+<p>To build documentation, just simply type <code>npm run esdoc</code>.</p>
+<pre><code><code class="source-code prettyprint">npm run esdoc</code>
+</code></pre><p>Then you can access by <a href="http://localhost:3000/doc/" title="Full Documentation">Full Documentation</a></p>
+<h3 id="eslint">Eslint</h3>
+<p>To make sure the code style, this project useing eslint to check the code format, just simply type <code>npm run eslint</code>.</p>
+<pre><code><code class="source-code prettyprint">npm run eslint</code>
+</code></pre><h3 id="how-another-person-would-easily-understand-the-code">How another person would easily understand the code</h3>
+<p>By reading the documentation, it&apos;s can be easy to find out the code structure.</p>
+<p>And the code build base on node module system and ES2015(OO, Class), so it&apos;s very easy to include the app or a part of component in any other project.</p>
+<h3 id="the-build-process">The build process</h3>
+<p>This project use webpack and webpack-dev-server to develop and build the code.</p>
+<p>By using webpack-dev-server, the page will be auto reload while you update the code.</p>
+<p>By using webpack, all code (include css, less, js etc..) will be wrap into one compressed js file (you can easily config to splt file as you want). And all files (include images) will be recreated with a hash file name (hash base on the file content). Which means you can always set the browser cache as long as you want without worry about clear cache issue.</p>
+<p>In this project, we put all build file in public/dist folder.</p>
+<h3 id="templating-engines">Templating engines</h3>
+<p>Base on the FE Coding Challenge.pdf, this project can use third party framework, but from Danielle Clewett&apos;s message:</p>
+<blockquote>
+<p>not to use any front-end frameworks like jQuery and Angular. Testing frameworks (make sure it is tested), NPM, gulp/grunt are all completely fine.</p>
+</blockquote>
+<p>Then, this project didn&apos;t use not just framework, but also any thrid part lib. So there is not using any Template engines. All using the native dom api build the dom.</p>
+<h3 id="multiple-platforms-devices">Multiple platforms/devices</h3>
+<p>The style for this project is responsive. So you can run this app on all morden browser in multiple devices.</p>
+<h3 id="how-different-website-include-this-app">How different website include this app</h3>
+<p>After we build the app and put it on a server or cdn service. Then other site can just simply add the js reference into there page.</p>
+<p>The app export on global function call newsRenderer, after add the js reference, just need to add online code to excute it</p>
+<pre><code><code class="source-code prettyprint">window.newsRenderer(document.getElementById(&apos;app&apos;), 3);</code>
+</code></pre><p>And There are may other option you can set</p>
+<pre><code><code class="source-code prettyprint">window.newsRenderer(
+  document.getElementById(&apos;app&apos;),
+  numberPerPage,
+  offset,
+  search,
+  orderBy,
+  orderDesc
+);</code>
+</code></pre><p>More detail can be found <a href="https://afternoon-tundra-63516.herokuapp.com/doc/class/app/components/App.js~App.html" title="Full Documentation">Here</a></p>
+<p>Have fun! :)</p>
 </div>
 </div>
 
